@@ -1,0 +1,361 @@
+@prefix : <http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/> .
+
+<http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/affectsHost
+:affectsHost rdf:type owl:ObjectProperty ;
+             rdfs:domain :Disease ;
+             rdfs:range :Plant .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/hasSymptom
+:hasSymptom rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isSymptomOf ;
+            rdfs:domain :Disease ;
+            rdfs:range :Symptom .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/isCausedBy
+:isCausedBy rdf:type owl:ObjectProperty ;
+            rdfs:domain :Disease ;
+            rdfs:range :Pathogen .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/isSymptomOf
+:isSymptomOf rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/isTreatedWith
+:isTreatedWith rdf:type owl:ObjectProperty ;
+               rdfs:domain :Disease ;
+               rdfs:range :Treatment .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/plantName
+:plantName rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Plant ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/symptomDescription
+:symptomDescription rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :Symptom ;
+                    rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Bacteria
+:Bacteria rdf:type owl:Class ;
+          rdfs:subClassOf :Pathogen .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/BacterialDisease
+:BacterialDisease rdf:type owl:Class ;
+                  rdfs:subClassOf :Disease .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Disease
+:Disease rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/FungalDisease
+:FungalDisease rdf:type owl:Class ;
+               rdfs:subClassOf :Disease .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Fungus
+:Fungus rdf:type owl:Class ;
+        rdfs:subClassOf :Pathogen .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Pathogen
+:Pathogen rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Plant
+:Plant rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Symptom
+:Symptom rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Treatment
+:Treatment rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/ViralDisease
+:ViralDisease rdf:type owl:Class ;
+              rdfs:subClassOf :Disease .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Virus
+:Virus rdf:type owl:Class ;
+       rdfs:subClassOf :Pathogen .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Apple
+:Apple rdf:type owl:NamedIndividual ;
+       rdfs:label "apple" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/AppleScab
+:AppleScab rdf:type owl:NamedIndividual ,
+                    :FungalDisease ;
+           :affectsHost :Apple ;
+           :hasSymptom :ScabbySpots ;
+           :isCausedBy :V_inaequalis ;
+           :isTreatedWith :Fungicide ,
+                          :Pruning ;
+           rdfs:label "AppleScab" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/BacterialWilt
+:BacterialWilt rdf:type owl:NamedIndividual ,
+                        :BacterialDisease ;
+               :affectsHost :Potato ,
+                            :Tomato ;
+               :hasSymptom :Wilting ;
+               :isCausedBy :R_Solanacearum ;
+               rdfs:label "Bacterial Wilt" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/C_liberibacter
+:C_liberibacter rdf:type owl:NamedIndividual ,
+                         :Bacteria ;
+                rdfs:label "C_liberibacter" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Citrus
+:Citrus rdf:type owl:NamedIndividual ;
+        rdfs:label "Citrus" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/CitrusGreening
+:CitrusGreening rdf:type owl:NamedIndividual ,
+                         :BacterialDisease ;
+                :affectsHost :Citrus ;
+                :hasSymptom :MottledLeaves ;
+                :isCausedBy :C_liberibacter ;
+                :isTreatedWith :RemoveInfectedPlants ,
+                               :VectorControl ;
+                :symptomDescription "Citrus Greening" ;
+                rdfs:label "Citrus Greening" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/CropRotation
+:CropRotation rdf:type owl:NamedIndividual ,
+                       :Treatment ;
+              rdfs:label "CropRotation" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Cucumber
+:Cucumber rdf:type owl:NamedIndividual ;
+          rdfs:label "Cucumber" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/DownyMidew_Cuke
+:DownyMidew_Cuke rdf:type owl:NamedIndividual ,
+                          :FungalDisease ;
+                 :affectsHost :Cucumber ;
+                 rdfs:label "DowneyMidew_Cuke" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/E_necator
+:E_necator rdf:type owl:NamedIndividual ,
+                    :Fungus ;
+           rdfs:label "E_necator" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Fungicide
+:Fungicide rdf:type owl:NamedIndividual ,
+                    :Treatment ;
+           rdfs:label "Fungicide" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Galls
+:Galls rdf:type owl:NamedIndividual ,
+                :Symptom ;
+       rdfs:label "Galls" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Grape
+:Grape rdf:type owl:NamedIndividual ;
+       rdfs:label "Grape" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/LateBlight
+:LateBlight rdf:type owl:NamedIndividual ,
+                     :FungalDisease ;
+            :affectsHost :Potato ,
+                         :Tomato ;
+            :hasSymptom :LeafSpots ;
+            :isCausedBy :P_Infestans ;
+            rdfs:label "Late Blight" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/LeafSpots
+:LeafSpots rdf:type owl:NamedIndividual ,
+                    :Symptom ;
+           rdfs:label "Leaf Spots" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/LeafYellowing
+:LeafYellowing rdf:type owl:NamedIndividual ,
+                        :Symptom ;
+               rdfs:label "Leaf Yellowing" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Maize
+:Maize rdf:type owl:NamedIndividual ;
+       rdfs:label "Maize" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/MottledLeaves
+:MottledLeaves rdf:type owl:NamedIndividual ,
+                        :Symptom ;
+               rdfs:label "MottledLeaves" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/P_Infestans
+:P_Infestans rdf:type owl:NamedIndividual ,
+                      :Fungus ;
+             rdfs:label "Phytophthora infestans" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/P_cubensis
+:P_cubensis rdf:type owl:NamedIndividual ,
+                     :Fungus ;
+            rdfs:label "P_cubensis" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Potato
+:Potato rdf:type owl:NamedIndividual ,
+                 :Plant ;
+        rdfs:label "Potato" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/PowderyCoating
+:PowderyCoating rdf:type owl:NamedIndividual ,
+                         :Symptom ;
+                rdfs:label "PowderyCoating" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/PowderyMildew_Grape
+:PowderyMildew_Grape rdf:type owl:NamedIndividual ,
+                              :FungalDisease ;
+                     :affectsHost :Grape ;
+                     :hasSymptom :PowderyCoating ;
+                     :isCausedBy :E_necator ;
+                     :isTreatedWith :Fungicide ;
+                     :symptomDescription "Powdery Mildew of Grape" ;
+                     rdfs:label "Powdery Mildew of Grape" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Pruning
+:Pruning rdf:type owl:NamedIndividual ,
+                  :Treatment ;
+         rdfs:label "Pruning" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/R_Solanacearum
+:R_Solanacearum rdf:type owl:NamedIndividual ,
+                         :Bacteria ;
+                rdfs:label "Ralstonia solanacearum" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/RemoveInfectedPlants
+:RemoveInfectedPlants rdf:type owl:NamedIndividual ,
+                               :Treatment ;
+                      rdfs:label "RemoveInfectedPlants" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/ScabbySpots
+:ScabbySpots rdf:type owl:NamedIndividual ,
+                      :Symptom ;
+             rdfs:label "ScabbySpots" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Tomato
+:Tomato rdf:type owl:NamedIndividual ,
+                 :Plant ;
+        rdfs:label "Tomato" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/U_maydis
+:U_maydis rdf:type owl:NamedIndividual ,
+                   :Fungus ;
+          rdfs:label "U_maydis" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/V_Dahliae
+:V_Dahliae rdf:type owl:NamedIndividual ,
+                    :Fungus ;
+           rdfs:label "Verticillium dahliae" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/V_inaequalis
+:V_inaequalis rdf:type owl:NamedIndividual ,
+                       :Fungus ;
+              rdfs:label "V_inaequalis" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/VectorControl
+:VectorControl rdf:type owl:NamedIndividual ,
+                        :Treatment .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/VerticilliumWilt
+:VerticilliumWilt rdf:type owl:NamedIndividual ,
+                           :FungalDisease ;
+                  :affectsHost :Tomato ;
+                  :hasSymptom :LeafYellowing ,
+                              :Wilting ;
+                  :isCausedBy :V_Dahliae ;
+                  rdfs:label "Verticillium Wilt" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/Wilting
+:Wilting rdf:type owl:NamedIndividual ,
+                  :Symptom ;
+         rdfs:label "Wilting" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/YellowAngularSpots
+:YellowAngularSpots rdf:type owl:NamedIndividual ,
+                             :Symptom ;
+                    rdfs:label "YellowAngularSpots" .
+
+
+###  http://www.semanticweb.org/wolspiron/ontologies/2025/10/plant-disease-ontology/cornSmut
+:cornSmut rdf:type owl:NamedIndividual ,
+                   :FungalDisease ;
+          :affectsHost :Maize ;
+          :hasSymptom :Galls ;
+          :isCausedBy :U_maydis ;
+          :isTreatedWith :CropRotation ;
+          rdfs:label "Corn Smut" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
